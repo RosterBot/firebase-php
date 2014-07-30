@@ -154,7 +154,7 @@ class Firebase implements FirebaseInterface
         } catch (Exception $e) {
             $return = null;
         }
-        return $return;
+        return $this->normalizeResponse($return);
     }
 
     /**
@@ -174,8 +174,15 @@ class Firebase implements FirebaseInterface
         } catch (Exception $e) {
             $return = null;
         }
-        return $return;
+        return $this->normalizeResponse($return);
     }
+	
+	/**
+	*	Turns response into JSON
+	*/
+	public function normalizeResponse($jsonString){
+		return json_decode($jsonString, true);
+	}
 
     /**
      * Returns with Initialized CURL Handler

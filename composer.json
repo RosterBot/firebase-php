@@ -1,8 +1,9 @@
 {
-    "name": "fiuhonors/firebase-php",
-    "description": "PHP Wrapper for Firebase REST Web APIs",
+    "name": "fiuhonors/firebase",
+    "description": "PHP Wrapper for Firebase REST Web APIs.",
 	"homepage": "https://github.com/fiuhonorstechteam/firebase-php/",
     "license": "MIT",
+	"version": "1.0"
     "authors": [
         {
             "name": "Tamas Kalman",

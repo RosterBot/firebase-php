@@ -1,15 +1,23 @@
 {
-    "name": "ktamas77/firebase-php",
+    "name": "fiuhonors/firebase-php",
     "description": "PHP Wrapper for Firebase REST Web APIs",
+	"homepage": "https://github.com/fiuhonorstechteam/firebase-php/",
     "license": "MIT",
     "authors": [
         {
             "name": "Tamas Kalman",
             "email": "ktamas77@gmail.com"
-        }
+        },
+		{
+			"name": "Alastair Paragas",
+			"email": "alastairparagas@gmail.com"
+		}
     ],
     "minimum-stability": "stable",
     "require": {
-
-    }
+		"php": ">=5.3"
+    },
+	"autoload": {
+		"classmap": ["firebaseLib.php"]
+	}
 }

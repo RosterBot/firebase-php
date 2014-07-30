@@ -1,0 +1,15 @@
+{
+    "name": "ktamas77/firebase-php",
+    "description": "PHP Wrapper for Firebase REST Web APIs",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tamas Kalman",
+            "email": "ktamas77@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+
+    }
+}

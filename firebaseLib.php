@@ -28,7 +28,6 @@ class Firebase implements FirebaseInterface
      *
      * @param String $baseURI Base URI
      *
-     * @return void
      */
     function __construct($baseURI = '', $token = '')
     {
@@ -74,6 +73,8 @@ class Firebase implements FirebaseInterface
      * Returns with the normalized JSON absolute path
      *
      * @param String $path to data
+     *
+     * @return string
      */
     private function _getJsonPath($path)
     {
@@ -106,7 +107,8 @@ class Firebase implements FirebaseInterface
      */
     public function set($path, $data)
     {
-      return $this->_writeData($path, $data, 'PUT');
+      $return = $this->_writeData($path, $data, 'PUT');
+      return $this->normalizeResponse($return);
     }
 
     /**
@@ -120,7 +122,9 @@ class Firebase implements FirebaseInterface
      */
     public function push($path, $data)
     {
-      return $this->_writeData($path, $data, 'POST');
+      $return = $this->_writeData($path, $data, 'POST');
+      return $this->normalizeResponse($return);
+
     }
 
     /**
@@ -134,7 +138,8 @@ class Firebase implements FirebaseInterface
      */
     public function update($path, $data)
     {
-      return $this->_writeData($path, $data, 'PATCH');
+      $return = $this->_writeData($path, $data, 'PATCH');
+      return $this->normalizeResponse($return);
     }
 
     /**
@@ -161,7 +166,7 @@ class Firebase implements FirebaseInterface
      * Deletes data from Firebase
      * HTTP 204: Ok
      *
-     * @param type $path Path
+     * @param string $path
      *
      * @return Array Response
      */
@@ -169,12 +174,13 @@ class Firebase implements FirebaseInterface
     {
         try {
             $ch = $this->_getCurlHandler($path, 'DELETE');
-            $return = curl_exec($ch);
+            curl_exec($ch);
+            $return = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
         } catch (Exception $e) {
             $return = null;
         }
-        return $this->normalizeResponse($return);
+        return $return == 204 ? true : false;
     }
 	
 	/**

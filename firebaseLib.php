@@ -180,7 +180,7 @@ class Firebase implements FirebaseInterface
         } catch (Exception $e) {
             $return = null;
         }
-        return $return == 204 ? true : false;
+        return $return == 200 ? true : false; // the docs say this should be 204 but it's actually 200. wtf?
     }
 	
 	/**
